@@ -1,0 +1,116 @@
+"""
+config.py — Configuration & Default Data
+=========================================
+All constants and the seeded data structure live here.
+Swap DEFAULT_DATA to pre-populate a fresh deployment.
+"""
+
+from pathlib import Path
+
+# ── Paths ─────────────────────────────────────────────────────────────────────
+BASE_DIR  = Path(__file__).parent
+DATA_FILE = BASE_DIR / "data.json"
+
+# ── App metadata ──────────────────────────────────────────────────────────────
+APP_NAME    = "Scripts Dashboard"
+APP_VERSION = "2.1.0"
+APP_ICON    = "⚡"
+
+# ── UI options ────────────────────────────────────────────────────────────────
+CATEGORY_ICONS = [
+    "📧", "🎫", "💻", "🔧", "📞", "📝",
+    "⚙️", "🛠️", "📊", "🔔", "🖥️", "📱", "🗂️", "📌",
+]
+
+CATEGORY_COLORS = [
+    "#e05252",  # rojo
+    "#4f85e0",  # azul
+    "#52b788",  # verde
+    "#9b72cf",  # morado
+    "#e8934a",  # naranja
+    "#3abfbf",  # teal
+    "#e8c84a",  # amarillo
+]
+
+# ── Default seed data ─────────────────────────────────────────────────────────
+DEFAULT_DATA: dict = {
+    "version": "2.1",
+    "categories": [
+        {
+            "id": "cat_correos",
+            "name": "Correos",
+            "icon": "📧",
+            "color": "#e05252",
+            "scripts": [
+                {
+                    "id": "scr_001",
+                    "title": "Solicitud de información",
+                    "content": (
+                        "Estimado usuario, para procesar su requerimiento "
+                        "necesitamos que nos comparta el Service Tag del equipo "
+                        "y la ubicación exacta de la oficina."
+                    ),
+                    "tags": ["info", "inicial"],
+                    "created_at": "2024-01-01T00:00:00",
+                    "updated_at": "2024-01-01T00:00:00",
+                },
+                {
+                    "id": "scr_002",
+                    "title": "Seguimiento pendiente",
+                    "content": (
+                        "Le escribo para darle seguimiento a su caso. "
+                        "Quedamos a la espera de su confirmación para proceder "
+                        "con la visita técnica."
+                    ),
+                    "tags": ["seguimiento"],
+                    "created_at": "2024-01-01T00:00:00",
+                    "updated_at": "2024-01-01T00:00:00",
+                },
+                {
+                    "id": "scr_003",
+                    "title": "Cierre de caso",
+                    "content": (
+                        "Su caso ha sido resuelto satisfactoriamente. "
+                        "Si requiere asistencia adicional no dude en contactarnos. "
+                        "Quedo atento a cualquier consulta."
+                    ),
+                    "tags": ["cierre"],
+                    "created_at": "2024-01-01T00:00:00",
+                    "updated_at": "2024-01-01T00:00:00",
+                },
+            ],
+        },
+        {
+            "id": "cat_zoho",
+            "name": "ZohoDesk",
+            "icon": "🎫",
+            "color": "#4f85e0",
+            "scripts": [
+                {
+                    "id": "scr_004",
+                    "title": "Apertura de ticket",
+                    "content": (
+                        "Se ha creado el ticket #[NUMERO] para atender su solicitud. "
+                        "Un técnico se comunicará con usted en un plazo máximo de "
+                        "24 horas hábiles."
+                    ),
+                    "tags": ["ticket", "apertura"],
+                    "created_at": "2024-01-01T00:00:00",
+                    "updated_at": "2024-01-01T00:00:00",
+                },
+                {
+                    "id": "scr_005",
+                    "title": "Escalar a segundo nivel",
+                    "content": (
+                        "Su caso ha sido escalado al equipo de segundo nivel de soporte. "
+                        "El tiempo estimado de respuesta es de 48 horas hábiles. "
+                        "Le notificaremos el avance por este mismo medio."
+                    ),
+                    "tags": ["escalamiento", "segundo nivel"],
+                    "created_at": "2024-01-01T00:00:00",
+                    "updated_at": "2024-01-01T00:00:00",
+                },
+            ],
+        },
+    ],
+}
