@@ -1,21 +1,12 @@
 import streamlit as st
 
-# Configuración de diseño
+# Configuración básica (sin CSS forzado para evitar conflictos de color)
 st.set_page_config(page_title="Gestor TIC", page_icon="⚡", layout="centered")
-
-# Estilos CSS para un diseño más profesional y limpio
-st.markdown("""
-    <style>
-    .stApp { background-color: #f8f9fa; }
-    div[data-testid="stExpander"] { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
-    .stButton>button { width: 100%; }
-    </style>
-    """, unsafe_allow_html=True)
 
 st.title("⚡ Gestor de Respuestas TIC")
 st.subheader("Acceso rápido a plantillas")
 
-# Diccionario único con Correos y Tickets
+# Diccionario de datos
 datos = {
     "📧 Correos": {
         "Solicitud de información": "Estimado usuario, para procesar su requerimiento necesitamos que nos comparta el Service Tag del equipo y la ubicación exacta de la oficina.",
@@ -31,9 +22,10 @@ datos = {
 # Creación de pestañas
 tab1, tab2 = st.tabs(["📧 Correos", "🎫 Tickets ZohoDesk"])
 
-# Función para mostrar los bloques con botón de copiar automático
+# Función para mostrar los bloques
 def mostrar_contenido(categoria):
     for titulo, texto in datos[categoria].items():
+        # Usamos st.expander para que no ocupe toda la pantalla
         with st.expander(f"📌 {titulo}"):
             st.code(texto, language="text")
 
