@@ -1,47 +1,47 @@
 import streamlit as st
 
-# Configuración visual
-st.set_page_config(page_title="Central TIC Luis", page_icon="🚀", layout="wide")
+# Configuración de diseño limpio
+st.set_page_config(page_title="Gestor TIC", page_icon="⚡", layout="centered")
 
-# Estilo personalizado para que se vea más moderno
+# Estilos CSS para un look moderno
 st.markdown("""
     <style>
-    .main { background-color: #f5f7f9; }
-    .stCodeBlock { border: 1px solid #d1d8e0; border-radius: 10px; }
+    .stApp { background-color: #f8f9fa; }
+    div[data-testid="stExpander"] { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🚀 Central de Comandos y Respuestas TIC")
-st.info("Selecciona una categoría y haz clic en el icono de copiar del cuadro de texto.")
+st.title("⚡ Gestor de Respuestas TIC")
+st.subheader("Selecciona el tipo de respuesta que necesitas")
 
-# --- DICCIONARIO DE SCRIPTS Y RESPUESTAS ---
-# Aquí puedes ir agregando todo lo que necesites a futuro
-scripts = {
-    "📞 Telefonía Avaya": {
-        "Migración H323 a SIP": "Se ha completado la migración de la extensión de protocolo H323 a SIP (Modelo J139) exitosamente. Pruebas de entrada y salida realizadas.",
-        "Reinicio de Extensión": "Se ha procedido con el reinicio físico y lógico de la extensión. El registro con el servidor Avaya IP Office es correcto.",
-        "Falla de registro": "Error de registro detectado. Se verifica VLAN de voz y estado de puerto en switch. Se reasigna contraseña de usuario en Manager."
+# Estructura de datos (Solo Correos y Tickets)
+datos = {
+    "📧 Correos": {
+        "Solicitud de información": "Estimado usuario, para procesar su requerimiento necesitamos que nos comparta el Service Tag del equipo y la ubicación exacta de la oficina.",
+        "Seguimiento pendiente": "Le escribo para darle seguimiento a su caso. Quedamos a la espera de su confirmación para proceder con la visita técnica.",
     },
-    "🌐 Redes Cisco (CCNA)": {
-        "Configuración Básica": "enable\nconfigure terminal\nhostname [NOMBRE_SWITCH]\nenable secret class\nline con 0\npassword cisco\nlogin\nexit",
-        "Verificar Interfaces": "show ip interface brief",
-        "Guardar Configuración": "copy running-config startup-config"
-    },
-    "🎫 Soporte Zoho Desk": {
-        "Respuesta Inicial": "Estimado usuario, hemos recibido su solicitud. Un técnico del equipo TIC ha sido asignado y se pondrá en contacto a la brevedad.",
-        "Cierre por BIOS": "Caso cerrado: Se configuró el Service Tag en BIOS tras cambio de placa base. El equipo inicia correctamente.",
-        "Solicitud de Datos": "Para continuar con su solicitud, por favor envíenos el Service Tag del equipo y su ubicación física (Oficina/Piso)."
+    "🎫 Tickets ZohoDesk": {
+        "BIOS - Service Tag": "Se ha resuelto el problema de BIOS mediante la configuración manual del Service Tag faltante en la placa base. Equipo operativo.",
+        "Migración SIP (J139)": "Se ha completado la migración de la extensión H323 a protocolo SIP. Se han verificado las pruebas de voz y el registro en el servidor.",
+        "Cierre estándar": "Incidente resuelto satisfactoriamente. Procedo a cerrar el ticket. Si persiste algún inconveniente, por favor reabrir este mismo ticket.",
     }
 }
 
-# --- INTERFAZ LATERAL (Sidebar) ---
-st.sidebar.header("Menú de Navegación")
-categoria = st.sidebar.selectbox("Elegir Categoría", list(scripts.keys()))
+# Creación de pestañas (Tabs)
+tab1, tab2 = st.tabs(["📧 Correos", "🎫 Tickets ZohoDesk"])
 
-# --- CUERPO PRINCIPAL ---
-st.header(f"Sección: {categoria}")
+# Función para mostrar los bloques
+def mostrar_contenido(categoria):
+    for titulo, texto in datos[categoria].items():
+        with st.expander(f"📌 {titulo}"):
+            st.code(texto, language="text")
 
-for nombre, contenido in scripts[categoria].items():
-    with st.expander(f"📌 {nombre}", expanded=True):
-        # Usamos st.code porque Streamlit añade automáticamente un botón de "COPIAR"
-        st.code(contenido, language="text")
+with tab1:
+    mostrar_contenido("📧 Correos")
+
+with tab2:
+    mostrar_contenido("🎫 Tickets ZohoDesk")
+
+# Pie de página minimalista
+st.markdown("---")
+st.caption("Central de productividad TIC - Acceso rápido")
