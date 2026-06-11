@@ -1,61 +1,24 @@
 {
-  "version": "2.1",
-  "categories": [
-    {
-      "id": "cat_correos",
-      "name": "Correos",
-      "icon": "📧",
-      "color": "#e05252",
-      "scripts": [
-        {
-          "id": "scr_001",
-          "title": "Solicitud de información",
-          "content": "Estimado usuario, para procesar su requerimiento necesitamos que nos comparta el Service Tag del equipo y la ubicación exacta de la oficina.",
-          "tags": ["info", "inicial"],
-          "created_at": "2024-01-01T00:00:00",
-          "updated_at": "2024-01-01T00:00:00"
-        },
-        {
-          "id": "scr_002",
-          "title": "Seguimiento pendiente",
-          "content": "Le escribo para darle seguimiento a su caso. Quedamos a la espera de su confirmación para proceder con la visita técnica.",
-          "tags": ["seguimiento"],
-          "created_at": "2024-01-01T00:00:00",
-          "updated_at": "2024-01-01T00:00:00"
-        },
-        {
-          "id": "scr_003",
-          "title": "Cierre de caso",
-          "content": "Su caso ha sido resuelto satisfactoriamente. Si requiere asistencia adicional no dude en contactarnos. Quedo atento a cualquier consulta.",
-          "tags": ["cierre"],
-          "created_at": "2024-01-01T00:00:00",
-          "updated_at": "2024-01-01T00:00:00"
-        }
-      ]
+    "📧 Correos": {
+        "Solicitud de Service Tag": "Estimado usuario, para procesar su requerimiento necesitamos que nos comparta el Service Tag del equipo y la ubicación exacta de la oficina.",
+        "Seguimiento pendiente": "Le escribo para darle seguimiento a su caso. Quedamos a la espera de su confirmación para proceder con la visita técnica.",
+        "Coordinación de TIC": "Hola Paul, te comparto la información del caso para que apliquemos los cambios de configuración a nivel de grupo. Saludos."
     },
-    {
-      "id": "cat_zoho",
-      "name": "ZohoDesk",
-      "icon": "🎫",
-      "color": "#4f85e0",
-      "scripts": [
-        {
-          "id": "scr_004",
-          "title": "Apertura de ticket",
-          "content": "Se ha creado el ticket #[NUMERO] para atender su solicitud. Un técnico se comunicará con usted en un plazo máximo de 24 horas hábiles.",
-          "tags": ["ticket", "apertura"],
-          "created_at": "2024-01-01T00:00:00",
-          "updated_at": "2024-01-01T00:00:00"
-        },
-        {
-          "id": "scr_005",
-          "title": "Escalar a segundo nivel",
-          "content": "Su caso ha sido escalado al equipo de segundo nivel de soporte. El tiempo estimado de respuesta es de 48 horas hábiles. Le notificaremos el avance por este mismo medio.",
-          "tags": ["escalamiento", "segundo nivel"],
-          "created_at": "2024-01-01T00:00:00",
-          "updated_at": "2024-01-01T00:00:00"
-        }
-      ]
+    "🎫 Tickets ZohoDesk": {
+        "Cierre estándar": "Incidente resuelto satisfactoriamente. Procedo a cerrar el ticket en Zoho Desk. Si persiste algún inconveniente, por favor reabrir este mismo ticket.",
+        "Escalamiento interno": "Estimado usuario, su solicitud requiere revisión detallada y ha sido escalada. Le mantendremos informado de los avances."
+    },
+    "📞 Telefonía Avaya": {
+        "Migración SIP (J139)": "Se ha completado la migración de la extensión de protocolo H323 a SIP (Modelo J139) exitosamente. Pruebas de audio de entrada y salida realizadas.",
+        "Revisión de Troncales (SSA)": "Se revisó el System Status Application (SSA) y no se detectan alarmas en las troncales. El registro VoIP opera con normalidad.",
+        "Falla de registro": "Error de registro detectado. Se verifica VLAN de voz y estado de puerto. Se reasigna contraseña de usuario en Manager."
+    },
+    "💻 Hardware y Soporte": {
+        "BIOS - Service Tag": "Se ha resuelto el problema de BIOS mediante la configuración manual del Service Tag faltante en la placa base. Equipo operativo.",
+        "Reasignación de Periféricos": "Se realizó la reasignación temporal de periféricos para solventar la incidencia reportada. Equipos validados por el usuario."
+    },
+    "🌐 Redes Cisco (CCNA)": {
+        "Revisión de Interfaces": "show ip interface brief\nshow interfaces status",
+        "Configuración de VLAN Básica": "enable\nconfigure terminal\nvlan 10\nname Voz\nexit\ninterface range fa0/1-24\nswitchport mode access\nswitchport access vlan 10"
     }
-  ]
 }
