@@ -1,20 +1,21 @@
 import streamlit as st
 
-# Configuración de diseño limpio
+# Configuración de diseño
 st.set_page_config(page_title="Gestor TIC", page_icon="⚡", layout="centered")
 
-# Estilos CSS para un look moderno
+# Estilos CSS para un diseño más profesional y limpio
 st.markdown("""
     <style>
     .stApp { background-color: #f8f9fa; }
     div[data-testid="stExpander"] { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
+    .stButton>button { width: 100%; }
     </style>
     """, unsafe_allow_html=True)
 
 st.title("⚡ Gestor de Respuestas TIC")
-st.subheader("Selecciona el tipo de respuesta que necesitas")
+st.subheader("Acceso rápido a plantillas")
 
-# Estructura de datos (Solo Correos y Tickets)
+# Diccionario único con Correos y Tickets
 datos = {
     "📧 Correos": {
         "Solicitud de información": "Estimado usuario, para procesar su requerimiento necesitamos que nos comparta el Service Tag del equipo y la ubicación exacta de la oficina.",
@@ -27,10 +28,10 @@ datos = {
     }
 }
 
-# Creación de pestañas (Tabs)
+# Creación de pestañas
 tab1, tab2 = st.tabs(["📧 Correos", "🎫 Tickets ZohoDesk"])
 
-# Función para mostrar los bloques
+# Función para mostrar los bloques con botón de copiar automático
 def mostrar_contenido(categoria):
     for titulo, texto in datos[categoria].items():
         with st.expander(f"📌 {titulo}"):
@@ -42,6 +43,6 @@ with tab1:
 with tab2:
     mostrar_contenido("🎫 Tickets ZohoDesk")
 
-# Pie de página minimalista
+# Pie de página
 st.markdown("---")
 st.caption("Central de productividad TIC - Acceso rápido")
